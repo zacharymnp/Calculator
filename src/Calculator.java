@@ -19,7 +19,6 @@ import javax.swing.JPanel;
  * @author Zachary
  * @author Max
  * @author Maya
- * @version 1.0
  * @since 2019-12-13
  */
 public class Calculator extends JPanel implements ActionListener {
