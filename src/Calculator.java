@@ -1,11 +1,10 @@
-package school;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -58,11 +57,82 @@ public class Calculator extends JPanel implements ActionListener {
 	public static JButton exponentButton = new JButton("^");
 	public static JButton squareRootButton = new JButton("^.5");
 	
+
+	/**
+	 * This method is run when the "equal" button is pressed and decides what math to do
+	 * @param a The text in the display
+	 * @return String The text to be outputted
+	 */
+	
+	public String doMath(String s) {
+		List<Double> nums = new ArrayList<Double>();
+		List<String> operators = new ArrayList<String>();
+		double currentNum = 0;
+		Double x = new Double (0);
+		String output = "undefined";
+		
+		for (int i = 0; i < s.length(); i++) {
+			if (s.substring(i,i+1).equals("0")) { x *= 10.0; }
+			else if (s.substring(i,i+1).equals("1")) { x *= 10.0; x += 1.0; }
+			else if (s.substring(i,i+1).equals("2")) { x *= 10.0; x += 2.0; }
+			else if (s.substring(i,i+1).equals("3")) { x *= 10.0; x += 3.0; }
+			else if (s.substring(i,i+1).equals("4")) { x *= 10.0; x += 4.0; }
+			else if (s.substring(i,i+1).equals("5")) { x *= 10.0; x += 5.0; }
+			else if (s.substring(i,i+1).equals("6")) { x *= 10.0; x += 6.0; }
+			else if (s.substring(i,i+1).equals("7")) { x *= 10.0; x += 7.0; }
+			else if (s.substring(i,i+1).equals("8")) { x *= 10.0; x += 8.0; }
+			else if (s.substring(i,i+1).equals("9")) { x *= 10.0; x += 9.0; }
+			else if (s.substring(i,i+1).equals(".")) {  } //decimal stuff goes here MAYA DO THIS
+			else if (s.substring(i,i+1).equals("+")) { operators.add("+"); nums.add(x); x = 0.0; }
+			else if (s.substring(i,i+1).equals("-")) { operators.add("-"); nums.add(x); x = 0.0; }
+			else if (s.substring(i,i+1).equals("*")) { operators.add("*"); nums.add(x); x = 0.0; }
+			else if (s.substring(i,i+1).equals("/")) { operators.add("/"); nums.add(x); x = 0.0; }
+		}
+		
+		nums.add(x);
+		x = 0.0;
+		
+		//needs pemdas MAYA DO THIS
+		
+		for (int i = 0; i < operators.size(); i++) {
+			if (operators.get(i).equals("*")) {
+				currentNum = nums.get(0) * nums.get(i+1);
+				nums.set(0,currentNum);
+			}
+			
+			else if (operators.get(i).equals("/")) {
+				currentNum = nums.get(0) / nums.get(i+1);
+				nums.set(0,currentNum);
+			}
+		
+			else if (operators.get(i).equals("+")) {
+				currentNum = nums.get(0) + nums.get(i+1);
+				nums.set(0,currentNum);
+			}
+			
+
+			else if (operators.get(i).equals("-")) {
+				currentNum = nums.get(0) - nums.get(i+1);
+				nums.set(0,currentNum);
+			}
+		}
+		currentNum = nums.get(0);
+		output = String.valueOf(currentNum);
+		
+		System.out.println(output);
+		display = output;
+		return output;
+		
+	}
+	
 	/**
 	 * This method is used to round a double value
 	 * @param a The number to be rounded
 	 * @return double The rounded value
 	 */
+	
+	
+	
 	public double round(double a) {
 		return ((double)((int)(a * 100)) / 100.0);
 	}
@@ -73,48 +143,7 @@ public class Calculator extends JPanel implements ActionListener {
 	 * @param b The number to be added by
 	 * @return double The sum of the two parameters
 	 */
-	public double add(double a, double b) {
-		return (a + b);
-	}
-	
-	/**
-	 * This method is used to subtract one double from another
-	 * @param a The number to be subtracted from
-	 * @param b The number to be subtracted
-	 * @return double The difference of the two parameters
-	 */
-	public double subtract(double a, double b) {
-		return (a - b);
-	}
-	
-	/**
-	 * This method is used to multiply two doubles together
-	 * @param a The number to be multiplied
-	 * @param b The number to be multiplied by
-	 * @return double The factor of the two parameters
-	 */
-	public double multiply(double a, double b) {
-		return (a * b);
-	}
-	
-	/**
-	 * This method is used to divide one double from another
-	 * @param a The number to be divided
-	 * @param b The number to be divided by
-	 * @return double The quotient of the two parameters
-	 */
-	public double divide(double a, double b) {
-		return (a / b);
-	}
-	
-	/**
-	 * This method is used when additionalFunctionsButton is clicked, in order to swap
-	 * all of the buttons with the additional ones we might come up with if we have time,
-	 * and vice versa
-	 * 
-	 * @param Nothing
-	 * @return Nothing
-	 */
+
 	public static void showAdditionalFunctions() {
 		if (isOnAdditionalButtons == false) {
 			zeroButton.setVisible(false);
@@ -183,6 +212,7 @@ public class Calculator extends JPanel implements ActionListener {
 			}
 		}
 		else if (clickedButton.getText() == "=") {
+			doMath(display);
 			//use the math methods here
 			//Max and Maya, you can deal with all of this stuff
 		}
