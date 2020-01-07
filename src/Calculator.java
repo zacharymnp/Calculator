@@ -18,6 +18,7 @@ import javax.swing.JPanel;
  * @author Zachary
  * @author Max
  * @author Maya
+ * @author Ivan 
  * @since 2019-12-13
  */
 public class Calculator extends JPanel implements ActionListener {
@@ -27,36 +28,41 @@ public class Calculator extends JPanel implements ActionListener {
 	public static boolean isOnAdditionalButtons = false;
 	
 	public static ArrayList<String> terms = new ArrayList<String>(); //figure out how to differentiate between terms
-	
-	public static JButton equalsButton = new JButton("=");
-	public static JButton deleteButton = new JButton("DEL");
-	public static JButton oneButton = new JButton("1");
-	public static JButton twoButton = new JButton("2");
-	public static JButton threeButton = new JButton("3");
-	public static JButton fourButton = new JButton("4");
-	public static JButton fiveButton = new JButton("5");
-	public static JButton sixButton = new JButton("6");
-	public static JButton sevenButton = new JButton("7");
-	public static JButton eightButton = new JButton("8");
-	public static JButton nineButton = new JButton("9");
-	public static JButton zeroButton = new JButton("0");
-	public static JButton pointButton = new JButton(".");
-	public static JButton plusButton = new JButton("+");
-	public static JButton minusButton = new JButton("-");
-	public static JButton timesButton = new JButton("*");
-	public static JButton dividedByButton = new JButton("/");
-	public static JButton additionalFunctionsButton = new JButton("Additional Functions");
-	public static JButton leftParenthesisButton = new JButton("(");
-	public static JButton rightParenthesisButton = new JButton(")");
-	public static JButton sineButton = new JButton("sin");
-	public static JButton cosineButton = new JButton("cos");
-	public static JButton tangentButton = new JButton("tan");
-	public static JButton factorialButton = new JButton("!");
-	public static JButton logButton = new JButton("log");
-	public static JButton naturalLogButton = new JButton("ln");
-	public static JButton exponentButton = new JButton("^");
-	public static JButton squareRootButton = new JButton("^.5");
-	
+
+	public static JButton[] AllButtonsArray = new JButton[] {
+
+		public static JButton zeroButton = new JButton("0");
+		public static JButton oneButton = new JButton("1");
+		public static JButton twoButton = new JButton("2");
+		public static JButton threeButton = new JButton("3");
+		public static JButton fourButton = new JButton("4");
+		public static JButton fiveButton = new JButton("5");
+		public static JButton sixButton = new JButton("6");
+		public static JButton sevenButton = new JButton("7");
+		public static JButton eightButton = new JButton("8");
+		public static JButton nineButton = new JButton("9");
+
+		public static JButton equalsButton = new JButton("=");
+		public static JButton deleteButton = new JButton("DEL");
+		public static JButton pointButton = new JButton(".");
+		public static JButton plusButton = new JButton("+");
+		public static JButton minusButton = new JButton("-");
+		public static JButton timesButton = new JButton("*");
+		public static JButton dividedByButton = new JButton("/");
+		public static JButton additionalFunctionsButton = new JButton("Additional Functions");
+		public static JButton leftParenthesisButton = new JButton("(");
+		public static JButton rightParenthesisButton = new JButton(")");
+		public static JButton sineButton = new JButton("sin");
+		public static JButton cosineButton = new JButton("cos");
+		public static JButton tangentButton = new JButton("tan");
+		public static JButton factorialButton = new JButton("!");
+		public static JButton logButton = new JButton("log");
+		public static JButton naturalLogButton = new JButton("ln");
+		public static JButton exponentButton = new JButton("^");
+		public static JButton squareRootButton = new JButton("^.5");
+
+}
+
 
 	/**
 	 * This method is run when the "equal" button is pressed and decides what math to do
@@ -70,7 +76,7 @@ public class Calculator extends JPanel implements ActionListener {
 		double currentNum = 0;
 		Double x = new Double (0);
 		String output = "undefined";
-		
+
 		for (int i = 0; i < s.length(); i++) {
 			if (s.substring(i,i+1).equals("0")) { x *= 10.0; }
 			else if (s.substring(i,i+1).equals("1")) { x *= 10.0; x += 1.0; }
@@ -144,56 +150,29 @@ public class Calculator extends JPanel implements ActionListener {
 	 * @return double The sum of the two parameters
 	 */
 
-	public static void showAdditionalFunctions() {
-		if (isOnAdditionalButtons == false) {
-			zeroButton.setVisible(false);
-			oneButton.setVisible(false);
-			twoButton.setVisible(false);
-			threeButton.setVisible(false);
-			fourButton.setVisible(false);
-			fiveButton.setVisible(false);
-			sixButton.setVisible(false);
-			sevenButton.setVisible(false);
-			eightButton.setVisible(false);
-			nineButton.setVisible(false);
-			leftParenthesisButton.setVisible(true);
-			rightParenthesisButton.setVisible(true);
-			sineButton.setVisible(true);
-			cosineButton.setVisible(true);
-			tangentButton.setVisible(true);
-			factorialButton.setVisible(true);
-			logButton.setVisible(true);
-			naturalLogButton.setVisible(true);
-			exponentButton.setVisible(true);
-			squareRootButton.setVisible(true);
+
+	public static void showAdditionalFunctions() {//this is dumb because we set all buttons, and then influence a certain range.
+		if (!isOnAdditionalButtons) {//so within here we want to set additional buttons to false
+			for (JButton button : AllButtonsArray) {
+				button.setVisible(true);
+			}
+			for (int i = 0; i < 9; i++) {
+				//items 2 through 11 should be toggled off
+				AllButtonsArray[i].setVisible(false);
+			}
 			isOnAdditionalButtons = true;
 		}
 		else {
-			leftParenthesisButton.setVisible(false);
-			rightParenthesisButton.setVisible(false);
-			sineButton.setVisible(false);
-			cosineButton.setVisible(false);
-			tangentButton.setVisible(false);
-			factorialButton.setVisible(false);
-			logButton.setVisible(false);
-			naturalLogButton.setVisible(false);
-			exponentButton.setVisible(false);
-			squareRootButton.setVisible(false);
-			zeroButton.setVisible(true);
-			oneButton.setVisible(true);
-			twoButton.setVisible(true);
-			threeButton.setVisible(true);
-			fourButton.setVisible(true);
-			fiveButton.setVisible(true);
-			sixButton.setVisible(true);
-			sevenButton.setVisible(true);
-			eightButton.setVisible(true);
-			nineButton.setVisible(true);
+			for (JButton button : AllButtonsArray) {
+				button.setVisible(false);
+			}
+			for (int i = 0; i < 9; i++) {
+				AllButtonsArray[i].setVisible(true);
+			}
 			isOnAdditionalButtons = false;
-
 		}
 	}
-	
+
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
