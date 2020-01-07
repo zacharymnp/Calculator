@@ -1,3 +1,5 @@
+package school;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -61,14 +63,13 @@ public class Calculator extends JPanel implements ActionListener {
 	/**
 	 * This method is run when the "equal" button is pressed and decides what math to do
 	 * @param a The text in the display
-	 * @return String The text to be outputted
+	 * @return String The text to be output
 	 */
-	
 	public String doMath(String s) {
 		List<Double> nums = new ArrayList<Double>();
 		List<String> operators = new ArrayList<String>();
 		double currentNum = 0;
-		Double x = new Double (0);
+		Double x = 0d;
 		String output = "undefined";
 		
 		for (int i = 0; i < s.length(); i++) {
@@ -129,10 +130,7 @@ public class Calculator extends JPanel implements ActionListener {
 	 * This method is used to round a double value
 	 * @param a The number to be rounded
 	 * @return double The rounded value
-	 */
-	
-	
-	
+	 */	
 	public double round(double a) {
 		return ((double)((int)(a * 100)) / 100.0);
 	}
@@ -143,7 +141,6 @@ public class Calculator extends JPanel implements ActionListener {
 	 * @param b The number to be added by
 	 * @return double The sum of the two parameters
 	 */
-
 	public static void showAdditionalFunctions() {
 		if (isOnAdditionalButtons == false) {
 			zeroButton.setVisible(false);
