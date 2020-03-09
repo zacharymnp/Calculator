@@ -87,7 +87,7 @@ public class Calculator extends JPanel implements ActionListener {
 					x *= 10.0; x += 1.0;
 				}
 				else {
-					x += 1.0/(10^decimalPlaces);
+					x += 1.0/(Math.pow(10, decimalPlaces));
 					decimalPlaces++;
 				}
 			}
@@ -96,7 +96,7 @@ public class Calculator extends JPanel implements ActionListener {
 					x *= 10.0; x += 2.0;
 				}
 				else {
-					x += 2.0/(10^decimalPlaces);
+					x += 2.0/(Math.pow(10, decimalPlaces));
 					decimalPlaces++;
 				}
 			}
@@ -105,7 +105,7 @@ public class Calculator extends JPanel implements ActionListener {
 					x *= 10.0; x += 3.0;
 				}
 				else {
-					x += 3.0/(10^decimalPlaces);
+					x += 3.0/(Math.pow(10, decimalPlaces));
 					decimalPlaces++;
 				}
 			}
@@ -114,7 +114,7 @@ public class Calculator extends JPanel implements ActionListener {
 					x *= 10.0; x += 4.0;
 				}
 				else {
-					x += 4.0/(10^decimalPlaces);
+					x += 4.0/(Math.pow(10, decimalPlaces));
 					decimalPlaces++;
 				}
 			}
@@ -123,7 +123,7 @@ public class Calculator extends JPanel implements ActionListener {
 					x *= 10.0; x += 5.0;
 				}
 				else {
-					x += 5.0/(10^decimalPlaces);
+					x += 5.0/(Math.pow(10, decimalPlaces));
 					decimalPlaces++;
 				}
 			}
@@ -132,7 +132,7 @@ public class Calculator extends JPanel implements ActionListener {
 					x *= 10.0; x += 6.0;
 				}
 				else {
-					x += 6.0/(10^decimalPlaces);
+					x += 6.0/(Math.pow(10, decimalPlaces));
 					decimalPlaces++;
 				}
 			}
@@ -141,7 +141,7 @@ public class Calculator extends JPanel implements ActionListener {
 					x *= 10.0; x += 7.0;
 				}
 				else {
-					x += 7.0/(10^decimalPlaces);
+					x += 7.0/(Math.pow(10, decimalPlaces));
 					decimalPlaces++;
 				}
 			}
@@ -150,7 +150,7 @@ public class Calculator extends JPanel implements ActionListener {
 					x *= 10.0; x += 8.0;
 				}
 				else {
-					x += 8.0/(10^decimalPlaces);
+					x += 8.0/(Math.pow(10, decimalPlaces));
 					decimalPlaces++;
 				}
 			}
@@ -159,7 +159,7 @@ public class Calculator extends JPanel implements ActionListener {
 					x *= 10.0; x += 9.0;
 				}
 				else {
-					x += 9.0/(10^decimalPlaces);
+					x += 9.0/(Math.pow(10, decimalPlaces));
 					decimalPlaces++;
 				}
 			}
@@ -208,12 +208,12 @@ public class Calculator extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * This method is used to round a double value
+	 * This method is used to round a double value to the nearest thousandth
 	 * @param a The number to be rounded
 	 * @return double The rounded value
 	 */	
 	public double round(double a) {
-		return ((double)((int)(a * 100)) / 100.0);
+		return ((double)((int)(a * 1000)) / 1000);
 	}
 	
 	/**
