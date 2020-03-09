@@ -1,4 +1,4 @@
-package school;
+package calculator;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -71,30 +71,111 @@ public class Calculator extends JPanel implements ActionListener {
 		double currentNum = 0;
 		Double x = 0d;
 		String output = "undefined";
+		int decimalPlaces = 0;
 		
 		for (int i = 0; i < s.length(); i++) {
-			if (s.substring(i,i+1).equals("0")) { x *= 10.0; }
-			else if (s.substring(i,i+1).equals("1")) { x *= 10.0; x += 1.0; }
-			else if (s.substring(i,i+1).equals("2")) { x *= 10.0; x += 2.0; }
-			else if (s.substring(i,i+1).equals("3")) { x *= 10.0; x += 3.0; }
-			else if (s.substring(i,i+1).equals("4")) { x *= 10.0; x += 4.0; }
-			else if (s.substring(i,i+1).equals("5")) { x *= 10.0; x += 5.0; }
-			else if (s.substring(i,i+1).equals("6")) { x *= 10.0; x += 6.0; }
-			else if (s.substring(i,i+1).equals("7")) { x *= 10.0; x += 7.0; }
-			else if (s.substring(i,i+1).equals("8")) { x *= 10.0; x += 8.0; }
-			else if (s.substring(i,i+1).equals("9")) { x *= 10.0; x += 9.0; }
-			else if (s.substring(i,i+1).equals(".")) {  } //decimal stuff goes here MAYA DO THIS
-			else if (s.substring(i,i+1).equals("+")) { operators.add("+"); nums.add(x); x = 0.0; }
-			else if (s.substring(i,i+1).equals("-")) { operators.add("-"); nums.add(x); x = 0.0; }
-			else if (s.substring(i,i+1).equals("*")) { operators.add("*"); nums.add(x); x = 0.0; }
-			else if (s.substring(i,i+1).equals("/")) { operators.add("/"); nums.add(x); x = 0.0; }
+			if (s.substring(i,i+1).equals("0")) { 
+				if (decimalPlaces == 0) {
+					x *= 10.0;
+				}
+				else {
+					decimalPlaces++;
+				}
+			}
+			else if (s.substring(i,i+1).equals("1")) {
+				if (decimalPlaces == 0) {
+					x *= 10.0; x += 1.0;
+				}
+				else {
+					x += 1.0/(10^decimalPlaces);
+					decimalPlaces++;
+				}
+			}
+			else if (s.substring(i,i+1).equals("2")) { 
+				if (decimalPlaces == 0) {
+					x *= 10.0; x += 2.0;
+				}
+				else {
+					x += 2.0/(10^decimalPlaces);
+					decimalPlaces++;
+				}
+			}
+			else if (s.substring(i,i+1).equals("3")) { 
+				if (decimalPlaces == 0) {
+					x *= 10.0; x += 3.0;
+				}
+				else {
+					x += 3.0/(10^decimalPlaces);
+					decimalPlaces++;
+				}
+			}
+			else if (s.substring(i,i+1).equals("4")) { 
+				if (decimalPlaces == 0) {
+					x *= 10.0; x += 4.0;
+				}
+				else {
+					x += 4.0/(10^decimalPlaces);
+					decimalPlaces++;
+				}
+			}
+			else if (s.substring(i,i+1).equals("5")) { 
+				if (decimalPlaces == 0) {
+					x *= 10.0; x += 5.0;
+				}
+				else {
+					x += 5.0/(10^decimalPlaces);
+					decimalPlaces++;
+				}
+			}
+			else if (s.substring(i,i+1).equals("6")) { 
+				if (decimalPlaces == 0) {
+					x *= 10.0; x += 6.0;
+				}
+				else {
+					x += 6.0/(10^decimalPlaces);
+					decimalPlaces++;
+				}
+			}
+			else if (s.substring(i,i+1).equals("7")) { 
+				if (decimalPlaces == 0) {
+					x *= 10.0; x += 7.0;
+				}
+				else {
+					x += 7.0/(10^decimalPlaces);
+					decimalPlaces++;
+				}
+			}
+			else if (s.substring(i,i+1).equals("8")) { 
+				if (decimalPlaces == 0) {
+					x *= 10.0; x += 8.0;
+				}
+				else {
+					x += 8.0/(10^decimalPlaces);
+					decimalPlaces++;
+				}
+			}
+			else if (s.substring(i,i+1).equals("9")) { 
+				if (decimalPlaces == 0) {
+					x *= 10.0; x += 9.0;
+				}
+				else {
+					x += 9.0/(10^decimalPlaces);
+					decimalPlaces++;
+				}
+			}
+			//TODO make decimals work
+			else if (s.substring(i,i+1).equals(".")) { decimalPlaces = 1; }
+			else if (s.substring(i,i+1).equals("+")) { operators.add("+"); nums.add(x); x = 0.0; decimalPlaces = 0; }
+			else if (s.substring(i,i+1).equals("-")) { operators.add("-"); nums.add(x); x = 0.0; decimalPlaces = 0;}
+			else if (s.substring(i,i+1).equals("*")) { operators.add("*"); nums.add(x); x = 0.0; decimalPlaces = 0;}
+			else if (s.substring(i,i+1).equals("/")) { operators.add("/"); nums.add(x); x = 0.0; decimalPlaces = 0;}
+			//TODO add additional functions
 		}
 		
 		nums.add(x);
 		x = 0.0;
 		
-		//needs pemdas MAYA DO THIS
-		
+		//TODO optimize PEMDAS
 		for (int i = 0; i < operators.size(); i++) {
 			if (operators.get(i).equals("*")) {
 				currentNum = nums.get(0) * nums.get(i+1);
@@ -204,14 +285,15 @@ public class Calculator extends JPanel implements ActionListener {
 		JButton clickedButton = (JButton)(e.getSource());
 		System.out.println(clickedButton.getText());
 		if (clickedButton.getText() == "DEL") {
-			if (display.length() != 0 ) {
+			if (display.equals("Go away")) {
+				display = "";
+			}
+			else if (display.length() != 0 ) {
 				display = display.substring(0, display.length() - 1);
 			}
 		}
 		else if (clickedButton.getText() == "=") {
 			doMath(display);
-			//use the math methods here
-			//Max and Maya, you can deal with all of this stuff
 		}
 		else if (clickedButton.getText() == "Additional Functions") {
 			showAdditionalFunctions();
@@ -325,6 +407,5 @@ public class Calculator extends JPanel implements ActionListener {
 	tangentButton.addActionListener(calculator);
 	calculator.add(tangentButton);
 	tangentButton.setBounds(200, 120, 100, 110);
-
 	}
 }
