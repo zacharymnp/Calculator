@@ -11,8 +11,7 @@ import java.util.List;
  * This is a CalculatorMath
  * <p>
  * @author Zachary
- * @author Max
- * @author Maya
+ * @author Ivan
  * @since 2019-12-13
  */
 public class CalculatorMath {	
