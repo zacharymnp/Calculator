@@ -91,8 +91,8 @@ public class CalculatorMath {
 	
 	/**
 	 * This method is used to round valueToRound double value to the nearest thousandth
-	 * @param valueToRound The number to be rounded
-	 * @return double The rounded value
+	 * 		@param valueToRound The number to be rounded
+	 * 		@return double The rounded value
 	 */	
 	public double round(double valueToRound) {
 		return ((double)((int)(valueToRound * 1000)) / 1000);
