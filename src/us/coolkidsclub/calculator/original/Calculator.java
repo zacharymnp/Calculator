@@ -1,17 +1,14 @@
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+package us.coolkidsclub.calculator.original;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 /**
- * <h1>Calculator<h1>
+ * <h1>us.coolkidsgroup.calculator.original.Calculator<h1>
  * <p>
  * This is a calculator
  * <p>
@@ -60,8 +57,8 @@ public class Calculator extends JPanel implements ActionListener {
 
 	/**
 	 * This method is run when the "equal" button is pressed and decides what math to do
-	 * @param a The text in the display
-	 * @return String The text to be output
+	 * 		@param s The text in the display
+	 * 		@return String The text to be output
 	 */
 	public void doMath(String s) {
 		//TODO remove error where there is an tiny extra decimal
@@ -171,7 +168,59 @@ public class Calculator extends JPanel implements ActionListener {
 			else if (s.charAt(i) == '-') { operators.add("-"); nums.add(num); num = 0.0; decimalPlaces = 0;}
 			else if (s.charAt(i) == '*') { operators.add("*"); nums.add(num); num = 0.0; decimalPlaces = 0;}
 			else if (s.charAt(i) == '/') { operators.add("/"); nums.add(num); num = 0.0; decimalPlaces = 0;}
+
+
+
+
+			switch (s.charAt(i)) {
+				case '0': {
+
+					break;
+				}
+				case '1': {
+
+					break;
+				}
+				case '2': {
+
+					break;
+				}
+				case '3': {
+
+					break;
+				}
+				case '4': {
+
+					break;
+				}
+				case '5': {
+
+					break;
+				}
+				case '6': {
+
+					break;
+				}
+				case '7': {
+
+					break;
+				}
+				case '8': {
+
+					break;
+				}
+				case '9': {
+
+					break;
+				}
+
+
+			}
 		}
+
+
+
+
 		
 		nums.add(num); //adding the last number to nums
 		num = 0.0;
