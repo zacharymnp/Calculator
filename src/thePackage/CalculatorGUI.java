@@ -45,6 +45,9 @@ public class CalculatorGUI extends JPanel implements ActionListener {
 	public static JButton exponentButton = new JButton("^");
 	public static JButton squareRootButton = new JButton("^.5");
 
+	/**
+	 * This method toggles the the visibility of the JButtons on the calculator, so that the additional functions can be revealed or hidden
+	 */
 	public static void showAdditionalFunctions() {
 		if (isOnAdditionalButtons == false) {
 			zeroButton.setVisible(false);
@@ -130,100 +133,103 @@ public class CalculatorGUI extends JPanel implements ActionListener {
 		repaint();
 	}
 	
+	/**
+	 * This method is run to create the calculator itself
+	 */
 	public static void initialize() {
 		
-	CalculatorGUI CalculatorGUI = new CalculatorGUI();
-	JFrame CalculatorGUIFrame = new JFrame();
-	CalculatorGUIFrame.getContentPane().add(CalculatorGUI);
-	CalculatorGUIFrame.setSize(416, 599);
-	CalculatorGUIFrame.setVisible(true);
-	CalculatorGUIFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	CalculatorGUIFrame.setResizable(false);
-	CalculatorGUI.setLayout(null); //we may want to use a layout, so that we don't need to worry about absolute positioning
+	CalculatorGUI Calculator = new CalculatorGUI();
+	JFrame CalculatorFrame = new JFrame();
+	CalculatorFrame.getContentPane().add(Calculator);
+	CalculatorFrame.setSize(416, 599);
+	CalculatorFrame.setVisible(true);
+	CalculatorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	CalculatorFrame.setResizable(false);
+	Calculator.setLayout(null); //we may want to use a layout, so that we don't need to worry about absolute positioning
 	
-	equalsButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(equalsButton);
+	equalsButton.addActionListener(Calculator);
+	Calculator.add(equalsButton);
 	equalsButton.setBounds(200, 450, 100, 110);
-	deleteButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(deleteButton);
+	deleteButton.addActionListener(Calculator);
+	Calculator.add(deleteButton);
 	deleteButton.setBounds(300, 50, 100, 70);
-	oneButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(oneButton);
+	oneButton.addActionListener(Calculator);
+	Calculator.add(oneButton);
 	oneButton.setBounds(0, 340, 100, 110);
-	twoButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(twoButton);
+	twoButton.addActionListener(Calculator);
+	Calculator.add(twoButton);
 	twoButton.setBounds(100, 340, 100, 110);
-	threeButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(threeButton);
+	threeButton.addActionListener(Calculator);
+	Calculator.add(threeButton);
 	threeButton.setBounds(200, 340, 100, 110);
-	fourButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(fourButton);
+	fourButton.addActionListener(Calculator);
+	Calculator.add(fourButton);
 	fourButton.setBounds(0, 230, 100, 110);
-	fiveButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(fiveButton);
+	fiveButton.addActionListener(Calculator);
+	Calculator.add(fiveButton);
 	fiveButton.setBounds(100, 230, 100, 110);
-	sixButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(sixButton);
+	sixButton.addActionListener(Calculator);
+	Calculator.add(sixButton);
 	sixButton.setBounds(200, 230, 100, 110);
-	sevenButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(sevenButton);
+	sevenButton.addActionListener(Calculator);
+	Calculator.add(sevenButton);
 	sevenButton.setBounds(0, 120, 100, 110);
-	eightButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(eightButton);
+	eightButton.addActionListener(Calculator);
+	Calculator.add(eightButton);
 	eightButton.setBounds(100, 120, 100, 110);
-	nineButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(nineButton);
+	nineButton.addActionListener(Calculator);
+	Calculator.add(nineButton);
 	nineButton.setBounds(200, 120, 100, 110);
-	zeroButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(zeroButton);
+	zeroButton.addActionListener(Calculator);
+	Calculator.add(zeroButton);
 	zeroButton.setBounds(100, 450, 100, 110);
-	pointButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(pointButton);
+	pointButton.addActionListener(Calculator);
+	Calculator.add(pointButton);
 	pointButton.setBounds(0, 450, 100, 110);
-	plusButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(plusButton);
+	plusButton.addActionListener(Calculator);
+	Calculator.add(plusButton);
 	plusButton.setBounds(300, 450, 100, 110);
-	minusButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(minusButton);
+	minusButton.addActionListener(Calculator);
+	Calculator.add(minusButton);
 	minusButton.setBounds(300, 340, 100, 110);
-	timesButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(timesButton);
+	timesButton.addActionListener(Calculator);
+	Calculator.add(timesButton);
 	timesButton.setBounds(300, 230, 100, 110);
-	dividedByButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(dividedByButton);
+	dividedByButton.addActionListener(Calculator);
+	Calculator.add(dividedByButton);
 	dividedByButton.setBounds(300, 120, 100, 110);
-	additionalFunctionsButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(additionalFunctionsButton);
+	additionalFunctionsButton.addActionListener(Calculator);
+	Calculator.add(additionalFunctionsButton);
 	additionalFunctionsButton.setBounds(0, 0, 416, 50);
-	leftParenthesisButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(leftParenthesisButton);
+	leftParenthesisButton.addActionListener(Calculator);
+	Calculator.add(leftParenthesisButton);
 	leftParenthesisButton.setBounds(0, 340, 100, 110);
-	rightParenthesisButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(rightParenthesisButton);
+	rightParenthesisButton.addActionListener(Calculator);
+	Calculator.add(rightParenthesisButton);
 	rightParenthesisButton.setBounds(100, 340, 100, 110);
-	exponentButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(exponentButton);
+	exponentButton.addActionListener(Calculator);
+	Calculator.add(exponentButton);
 	exponentButton.setBounds(200, 340, 100, 110);
-	squareRootButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(squareRootButton);
+	squareRootButton.addActionListener(Calculator);
+	Calculator.add(squareRootButton);
 	squareRootButton.setBounds(100, 450, 100, 110);
-	naturalLogButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(naturalLogButton);
+	naturalLogButton.addActionListener(Calculator);
+	Calculator.add(naturalLogButton);
 	naturalLogButton.setBounds(100, 230, 100, 110);
-	logButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(logButton);
+	logButton.addActionListener(Calculator);
+	Calculator.add(logButton);
 	logButton.setBounds(0, 230, 100, 110);
-	factorialButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(factorialButton);
+	factorialButton.addActionListener(Calculator);
+	Calculator.add(factorialButton);
 	factorialButton.setBounds(200, 230, 100, 110);
-	sineButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(sineButton);
+	sineButton.addActionListener(Calculator);
+	Calculator.add(sineButton);
 	sineButton.setBounds(0, 120, 100, 110);
-	cosineButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(cosineButton);
+	cosineButton.addActionListener(Calculator);
+	Calculator.add(cosineButton);
 	cosineButton.setBounds(100, 120, 100, 110);
-	tangentButton.addActionListener(CalculatorGUI);
-	CalculatorGUI.add(tangentButton);
+	tangentButton.addActionListener(Calculator);
+	Calculator.add(tangentButton);
 	tangentButton.setBounds(200, 120, 100, 110);
 	}
 }
