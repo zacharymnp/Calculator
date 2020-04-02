@@ -34,101 +34,34 @@ public class CalculatorMath {
 		
 		//for loop adds numbers and operators in the String to their respective Lists
 		for (int i = 0; i < s.length(); i++) {
-			if (s.charAt(i) == '0') { 
+
+			if (s.charAt(i) <= 9) {
 				if (decimalPlaces == 0) {
-					num *= 10.0;
+					num *= (double) s.charAt(i); num += (double) s.charAt(i);
 				}
 				else {
+					num += (double) s.charAt(i)/(Math.pow(10, decimalPlaces));
 					decimalPlaces++;
 				}
 			}
-			else if (s.charAt(i) == '1') {
-				if (decimalPlaces == 0) {
-					num *= 10.0; num += 1.0;
+
+			switch (s.charAt(i)) {
+				case '.': {
+					decimalPlaces = 1;
 				}
-				else {
-					num += 1.0/(Math.pow(10, decimalPlaces));
-					decimalPlaces++;
+				case '+': {
+					operators.add("+"); nums.add(num); num = 0.0; decimalPlaces = 0;
 				}
-			}
-			else if (s.charAt(i) == '2') { 
-				if (decimalPlaces == 0) {
-					num *= 10.0; num += 2.0;
+				case '-': {
+					operators.add("-"); nums.add(num); num = 0.0; decimalPlaces = 0;
 				}
-				else {
-					num += 2.0/(Math.pow(10, decimalPlaces));
-					decimalPlaces++;
+				case '*': {
+					operators.add("*"); nums.add(num); num = 0.0; decimalPlaces = 0;
 				}
-			}
-			else if (s.charAt(i) == '3') { 
-				if (decimalPlaces == 0) {
-					num *= 10.0; num += 3.0;
-				}
-				else {
-					num += 3.0/(Math.pow(10, decimalPlaces));
-					decimalPlaces++;
+				case '/': {
+					operators.add("/"); nums.add(num); num = 0.0; decimalPlaces = 0;
 				}
 			}
-			else if (s.charAt(i) == '4') { 
-				if (decimalPlaces == 0) {
-					num *= 10.0; num += 4.0;
-				}
-				else {
-					num += 4.0/(Math.pow(10, decimalPlaces));
-					decimalPlaces++;
-				}
-			}
-			else if (s.charAt(i) == '5') { 
-				if (decimalPlaces == 0) {
-					num *= 10.0; num += 5.0;
-				}
-				else {
-					num += 5.0/(Math.pow(10, decimalPlaces));
-					decimalPlaces++;
-				}
-			}
-			else if (s.charAt(i) == '6') { 
-				if (decimalPlaces == 0) {
-					num *= 10.0; num += 6.0;
-				}
-				else {
-					num += 6.0/(Math.pow(10, decimalPlaces));
-					decimalPlaces++;
-				}
-			}
-			else if (s.charAt(i) == '7') { 
-				if (decimalPlaces == 0) {
-					num *= 10.0; num += 7.0;
-				}
-				else {
-					num += 7.0/(Math.pow(10, decimalPlaces));
-					decimalPlaces++;
-				}
-			}
-			else if (s.charAt(i) == '8') { 
-				if (decimalPlaces == 0) {
-					num *= 10.0; num += 8.0;
-				}
-				else {
-					num += 8.0/(Math.pow(10, decimalPlaces));
-					decimalPlaces++;
-				}
-			}
-			else if (s.charAt(i) == '9') { 
-				if (decimalPlaces == 0) {
-					num *= 10.0; num += 9.0;
-				}
-				else {
-					num += 9.0/(Math.pow(10, decimalPlaces));
-					decimalPlaces++;
-				}
-			}
-			
-			else if (s.charAt(i) == '.') { decimalPlaces = 1; }
-			else if (s.charAt(i) == '+') { operators.add("+"); nums.add(num); num = 0.0; decimalPlaces = 0;}
-			else if (s.charAt(i) == '-') { operators.add("-"); nums.add(num); num = 0.0; decimalPlaces = 0;}
-			else if (s.charAt(i) == '*') { operators.add("*"); nums.add(num); num = 0.0; decimalPlaces = 0;}
-			else if (s.charAt(i) == '/') { operators.add("/"); nums.add(num); num = 0.0; decimalPlaces = 0;}
 		}
 		
 		nums.add(num); //adding the last number to nums
@@ -157,11 +90,11 @@ public class CalculatorMath {
 	}
 	
 	/**
-	 * This method is used to round a double value to the nearest thousandth
-	 * @param a The number to be rounded
+	 * This method is used to round valueToRound double value to the nearest thousandth
+	 * @param valueToRound The number to be rounded
 	 * @return double The rounded value
 	 */	
-	public double round(double a) {
-		return ((double)((int)(a * 1000)) / 1000);
+	public double round(double valueToRound) {
+		return ((double)((int)(valueToRound * 1000)) / 1000);
 	}
 }
