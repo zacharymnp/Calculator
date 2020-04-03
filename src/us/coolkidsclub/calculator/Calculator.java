@@ -1,4 +1,4 @@
-package us.coolkidsclub.calculator.original;
+package us.coolkidsclub.calculator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -298,106 +298,102 @@ public class Calculator extends JPanel implements ActionListener {
 		}
 		repaint();
 	}
+
 	
-	/**
-	 * This is the main method, which creates calculatorFrame and adds in the buttons
-	 * @param args
-	 * @return Nothing
-	 */
 	public static void main(String[] args) {
-		
-	Calculator calculator = new Calculator();
-	JFrame calculatorFrame = new JFrame();
-	calculatorFrame.getContentPane().add(calculator);
-	calculatorFrame.setSize(416, 599);
-	calculatorFrame.setVisible(true);
-	calculatorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	calculatorFrame.setResizable(false);
-	calculator.setLayout(null); //we may want to use a layout, so that we don't need to worry about absolute positioning
-	
-	equalsButton.addActionListener(calculator);
-	calculator.add(equalsButton);
-	equalsButton.setBounds(200, 450, 100, 110);
-	deleteButton.addActionListener(calculator);
-	calculator.add(deleteButton);
-	deleteButton.setBounds(300, 50, 100, 70);
-	oneButton.addActionListener(calculator);
-	calculator.add(oneButton);
-	oneButton.setBounds(0, 340, 100, 110);
-	twoButton.addActionListener(calculator);
-	calculator.add(twoButton);
-	twoButton.setBounds(100, 340, 100, 110);
-	threeButton.addActionListener(calculator);
-	calculator.add(threeButton);
-	threeButton.setBounds(200, 340, 100, 110);
-	fourButton.addActionListener(calculator);
-	calculator.add(fourButton);
-	fourButton.setBounds(0, 230, 100, 110);
-	fiveButton.addActionListener(calculator);
-	calculator.add(fiveButton);
-	fiveButton.setBounds(100, 230, 100, 110);
-	sixButton.addActionListener(calculator);
-	calculator.add(sixButton);
-	sixButton.setBounds(200, 230, 100, 110);
-	sevenButton.addActionListener(calculator);
-	calculator.add(sevenButton);
-	sevenButton.setBounds(0, 120, 100, 110);
-	eightButton.addActionListener(calculator);
-	calculator.add(eightButton);
-	eightButton.setBounds(100, 120, 100, 110);
-	nineButton.addActionListener(calculator);
-	calculator.add(nineButton);
-	nineButton.setBounds(200, 120, 100, 110);
-	zeroButton.addActionListener(calculator);
-	calculator.add(zeroButton);
-	zeroButton.setBounds(100, 450, 100, 110);
-	pointButton.addActionListener(calculator);
-	calculator.add(pointButton);
-	pointButton.setBounds(0, 450, 100, 110);
-	plusButton.addActionListener(calculator);
-	calculator.add(plusButton);
-	plusButton.setBounds(300, 450, 100, 110);
-	minusButton.addActionListener(calculator);
-	calculator.add(minusButton);
-	minusButton.setBounds(300, 340, 100, 110);
-	timesButton.addActionListener(calculator);
-	calculator.add(timesButton);
-	timesButton.setBounds(300, 230, 100, 110);
-	dividedByButton.addActionListener(calculator);
-	calculator.add(dividedByButton);
-	dividedByButton.setBounds(300, 120, 100, 110);
-	additionalFunctionsButton.addActionListener(calculator);
-	calculator.add(additionalFunctionsButton);
-	additionalFunctionsButton.setBounds(0, 0, 416, 50);
-	leftParenthesisButton.addActionListener(calculator);
-	calculator.add(leftParenthesisButton);
-	leftParenthesisButton.setBounds(0, 340, 100, 110);
-	rightParenthesisButton.addActionListener(calculator);
-	calculator.add(rightParenthesisButton);
-	rightParenthesisButton.setBounds(100, 340, 100, 110);
-	exponentButton.addActionListener(calculator);
-	calculator.add(exponentButton);
-	exponentButton.setBounds(200, 340, 100, 110);
-	squareRootButton.addActionListener(calculator);
-	calculator.add(squareRootButton);
-	squareRootButton.setBounds(100, 450, 100, 110);
-	naturalLogButton.addActionListener(calculator);
-	calculator.add(naturalLogButton);
-	naturalLogButton.setBounds(100, 230, 100, 110);
-	logButton.addActionListener(calculator);
-	calculator.add(logButton);
-	logButton.setBounds(0, 230, 100, 110);
-	factorialButton.addActionListener(calculator);
-	calculator.add(factorialButton);
-	factorialButton.setBounds(200, 230, 100, 110);
-	sineButton.addActionListener(calculator);
-	calculator.add(sineButton);
-	sineButton.setBounds(0, 120, 100, 110);
-	cosineButton.addActionListener(calculator);
-	calculator.add(cosineButton);
-	cosineButton.setBounds(100, 120, 100, 110);
-	tangentButton.addActionListener(calculator);
-	calculator.add(tangentButton);
-	tangentButton.setBounds(200, 120, 100, 110);
+
+		Calculator calculator = new Calculator();
+		JFrame calculatorFrame = new JFrame();
+		calculatorFrame.getContentPane().add(calculator);
+		calculatorFrame.setSize(416, 599);
+		calculatorFrame.setVisible(true);
+		calculatorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		calculatorFrame.setResizable(false);
+		calculator.setLayout(null); //we may want to use a layout, so that we don't need to worry about absolute positioning
+
+		equalsButton.addActionListener(calculator);
+		calculator.add(equalsButton);
+		equalsButton.setBounds(200, 450, 100, 110);
+		deleteButton.addActionListener(calculator);
+		calculator.add(deleteButton);
+		deleteButton.setBounds(300, 50, 100, 70);
+		oneButton.addActionListener(calculator);
+		calculator.add(oneButton);
+		oneButton.setBounds(0, 340, 100, 110);
+		twoButton.addActionListener(calculator);
+		calculator.add(twoButton);
+		twoButton.setBounds(100, 340, 100, 110);
+		threeButton.addActionListener(calculator);
+		calculator.add(threeButton);
+		threeButton.setBounds(200, 340, 100, 110);
+		fourButton.addActionListener(calculator);
+		calculator.add(fourButton);
+		fourButton.setBounds(0, 230, 100, 110);
+		fiveButton.addActionListener(calculator);
+		calculator.add(fiveButton);
+		fiveButton.setBounds(100, 230, 100, 110);
+		sixButton.addActionListener(calculator);
+		calculator.add(sixButton);
+		sixButton.setBounds(200, 230, 100, 110);
+		sevenButton.addActionListener(calculator);
+		calculator.add(sevenButton);
+		sevenButton.setBounds(0, 120, 100, 110);
+		eightButton.addActionListener(calculator);
+		calculator.add(eightButton);
+		eightButton.setBounds(100, 120, 100, 110);
+		nineButton.addActionListener(calculator);
+		calculator.add(nineButton);
+		nineButton.setBounds(200, 120, 100, 110);
+		zeroButton.addActionListener(calculator);
+		calculator.add(zeroButton);
+		zeroButton.setBounds(100, 450, 100, 110);
+		pointButton.addActionListener(calculator);
+		calculator.add(pointButton);
+		pointButton.setBounds(0, 450, 100, 110);
+		plusButton.addActionListener(calculator);
+		calculator.add(plusButton);
+		plusButton.setBounds(300, 450, 100, 110);
+		minusButton.addActionListener(calculator);
+		calculator.add(minusButton);
+		minusButton.setBounds(300, 340, 100, 110);
+		timesButton.addActionListener(calculator);
+		calculator.add(timesButton);
+		timesButton.setBounds(300, 230, 100, 110);
+		dividedByButton.addActionListener(calculator);
+		calculator.add(dividedByButton);
+		dividedByButton.setBounds(300, 120, 100, 110);
+		additionalFunctionsButton.addActionListener(calculator);
+		calculator.add(additionalFunctionsButton);
+		additionalFunctionsButton.setBounds(0, 0, 416, 50);
+		leftParenthesisButton.addActionListener(calculator);
+		calculator.add(leftParenthesisButton);
+		leftParenthesisButton.setBounds(0, 340, 100, 110);
+		rightParenthesisButton.addActionListener(calculator);
+		calculator.add(rightParenthesisButton);
+		rightParenthesisButton.setBounds(100, 340, 100, 110);
+		exponentButton.addActionListener(calculator);
+		calculator.add(exponentButton);
+		exponentButton.setBounds(200, 340, 100, 110);
+		squareRootButton.addActionListener(calculator);
+		calculator.add(squareRootButton);
+		squareRootButton.setBounds(100, 450, 100, 110);
+		naturalLogButton.addActionListener(calculator);
+		calculator.add(naturalLogButton);
+		naturalLogButton.setBounds(100, 230, 100, 110);
+		logButton.addActionListener(calculator);
+		calculator.add(logButton);
+		logButton.setBounds(0, 230, 100, 110);
+		factorialButton.addActionListener(calculator);
+		calculator.add(factorialButton);
+		factorialButton.setBounds(200, 230, 100, 110);
+		sineButton.addActionListener(calculator);
+		calculator.add(sineButton);
+		sineButton.setBounds(0, 120, 100, 110);
+		cosineButton.addActionListener(calculator);
+		calculator.add(cosineButton);
+		cosineButton.setBounds(100, 120, 100, 110);
+		tangentButton.addActionListener(calculator);
+		calculator.add(tangentButton);
+		tangentButton.setBounds(200, 120, 100, 110);
 	}
 }
