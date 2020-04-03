@@ -35,7 +35,7 @@ public class CalculatorMath {
 		//for loop adds numbers and operators in the String to their respective Lists
 		for (int i = 0; i < s.length(); i++) {
 
-			if (Character.getNumericValue(s.charAt(i)) <= 9) {
+			if (s.charAt(i) <= 9) {
 				if (decimalPlaces == 0) {
 					num *= (double) s.charAt(i); num += (double) s.charAt(i);
 				}
