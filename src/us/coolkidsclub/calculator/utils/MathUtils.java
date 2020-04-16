@@ -3,12 +3,13 @@ package us.coolkidsclub.calculator.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This method is run when the "equal" button is pressed and decides what math to do
+ * 		@param s The text in the display
+ * 		@return String The text to be output
+ */
 public class MathUtils {
-    /**
-     * This method is run when the "equal" button is pressed and decides what math to do
-     * 		@param s The text in the display
-     * 		@return String The text to be output
-     */
+
     public static String doMath(String s) {
         //TODO remove error where there is an tiny extra decimal
         //TODO add additional functions

@@ -143,9 +143,9 @@ public class CGUI extends JPanel implements ActionListener { //TODO implement si
     }
 
     /**
-     * Shows additional functions
+     * Toggles additional functions
      */
-    public static void showAdditionalFunctions() {
+    public static void toggleAdditionalFunctions() {
         zeroButton.setVisible(additionalFunctionsShown);
         oneButton.setVisible(additionalFunctionsShown);
         twoButton.setVisible(additionalFunctionsShown);
@@ -169,7 +169,7 @@ public class CGUI extends JPanel implements ActionListener { //TODO implement si
         additionalFunctionsShown = !additionalFunctionsShown;
     }
 
-    public void refreshDisplay() {
+    public void refreshDisplay() { //what is the point of this method?
         repaint();
     }
 
@@ -198,7 +198,7 @@ public class CGUI extends JPanel implements ActionListener { //TODO implement si
             //TODO utilize stringUtils to clean display param before calling mathUtils
         }
         else if (clickedButton.getText().equals("Additional Functions")) {
-            showAdditionalFunctions();
+            toggleAdditionalFunctions();
         }
         else if (display.length() < 14) {
             display = display.concat(clickedButton.getText());
