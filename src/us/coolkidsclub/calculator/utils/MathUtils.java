@@ -3,13 +3,15 @@ package us.coolkidsclub.calculator.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * This method is run when the "equal" button is pressed and decides what math to do
- * 		@param s The text in the display
- * 		@return String The text to be output
- */
 public class MathUtils {
 
+    static ArrayList<String> operationsList = new ArrayList<>();
+
+    /**
+     * This method is run when the "equal" button is pressed and decides what math to do.
+     *      @param s The input string.
+     * 		@return String The text to be output.
+     */
     public static String doMath(String s) {
         //TODO remove error where there is an tiny extra decimal
         //TODO add additional functions
@@ -21,19 +23,36 @@ public class MathUtils {
         String output = "undefined";
         int decimalPlaces = 0;
 
+        operationsList.add(".");
+        operationsList.add("+");
+        operationsList.add("-");
+        operationsList.add("*");
+        operationsList.add("/");
+
         //for loop adds numbers and operators in the String to their respective Lists
         for (int i = 0; i < s.length(); i++) {
 
-
             //eventually this will replace the if else chain, but for now, it lies forgotten
-            /*if ((double) s.charAt(i) <= 9 && decimalPlaces == 0) {
-                num *= 10; num += (double) s.charAt(i);
-            } else {
-                num += (double) s.charAt(i)/(Math.pow(10, decimalPlaces));
-                decimalPlaces++;
-            }*/
+//            if ((double) s.charAt(i) <= 9 && decimalPlaces == 0) {
+//                num *= 10; num += (double) s.charAt(i);
+//            } else {
+//                num += (double) s.charAt(i)/(Math.pow(10, decimalPlaces));
+//                decimalPlaces++;
+//            }
 
 
+//            char testOne = s.charAt(i);
+//            double test = Double.parseDouble(String.valueOf(s.charAt(i)));
+
+//
+//            if (!operationsList.contains(String.valueOf(s.charAt(i)))) {
+//                if (Double.parseDouble(String.valueOf(s.charAt(i))) <= 9 && decimalPlaces == 0) {
+//                    num *= 10; num += (double) s.charAt(i);
+//                } else {
+//                    num += (double) s.charAt(i) / (Math.pow(10, decimalPlaces));
+//                    decimalPlaces++;
+//                }
+//            }
 
             if (s.charAt(i) == '0') {
                 if (decimalPlaces == 0) {
@@ -125,41 +144,49 @@ public class MathUtils {
                 }
             }
 
-            //what the hell is below me
-            if (s.charAt(i) == '.') { decimalPlaces = 1; }
-            else if (s.charAt(i) == '+') { operators.add("+"); nums.add(num); num = 0.0; decimalPlaces = 0;}
-            else if (s.charAt(i) == '-') { operators.add("-"); nums.add(num); num = 0.0; decimalPlaces = 0;}
-            else if (s.charAt(i) == '*') { operators.add("*"); nums.add(num); num = 0.0; decimalPlaces = 0;}
-            else if (s.charAt(i) == '/') { operators.add("/"); nums.add(num); num = 0.0; decimalPlaces = 0;}
+            switch (s.charAt(i)) {
+                case '.':
+                    decimalPlaces = 1;
+                    break;
+                case '+':
+                    operators.add("+"); nums.add(num); num = 0.0; decimalPlaces = 0;
+                    break;
+                case '-':
+                    operators.add("-"); nums.add(num); num = 0.0; decimalPlaces = 0;
+                    break;
+                case '*':
+                    operators.add("*"); nums.add(num); num = 0.0; decimalPlaces = 0;
+                    break;
+                case '/':
+                    operators.add("/"); nums.add(num); num = 0.0; decimalPlaces = 0;
+            }
         }
 
 
-
-
-
         nums.add(num); //adding the last number to nums
-        num = 0.0;
 
         //for loop actually does the math
         for (int i = 0; i < operators.size(); i++) {
-            if (operators.get(i).equals("*")) {
-                nums.set(0, nums.get(0) * nums.get(i + 1));
+
+            switch (operators.get(i)) { //Optimized by Ivan to make the same logic one line longer :)
+                case "*":
+                    nums.set(0, nums.get(0) * nums.get(i + 1));
+                    break;
+                case "/":
+                    nums.set(0, nums.get(0) / nums.get(i + 1));
+                    break;
+                case "+":
+                    nums.set(0, nums.get(0) + nums.get(i + 1));
+                    break;
+                case "-":
+                    nums.set(0, nums.get(0) - nums.get(i + 1));
             }
-            else if (operators.get(i).equals("/")) {
-                nums.set(0, nums.get(0) / nums.get(i + 1));
-            }
-            else if (operators.get(i).equals("+")) {
-                nums.set(0, nums.get(0) + nums.get(i + 1));
-            }
-            else if (operators.get(i).equals("-")) {
-                nums.set(0, nums.get(0) - nums.get(i + 1));
-            }
+
         }
         nums.set(0, round(nums.get(0)));
         output = String.valueOf(nums.get(0));
 
         System.out.println(output); //putting output in console for debugging purposes
-//        display = output; //putting output on display
         return output;
 
     }
