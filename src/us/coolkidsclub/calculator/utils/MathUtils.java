@@ -31,118 +31,18 @@ public class MathUtils {
         //for loop adds numbers and operators in the String to their respective Lists
         for (int i = 0; i < s.length(); i++) {
 
-            //eventually this will replace the if else chain, but for now, it lies forgotten
-//            if ((double) s.charAt(i) <= 9 && decimalPlaces == 0) {
-//                num *= 10; num += (double) s.charAt(i);
-//            } else {
-//                num += (double) s.charAt(i)/(Math.pow(10, decimalPlaces));
-//                decimalPlaces++;
-//            }
-
-
-//            char testOne = s.charAt(i);
-//            double test = Double.parseDouble(String.valueOf(s.charAt(i)));
-
-//
-//            if (!operationsList.contains(String.valueOf(s.charAt(i)))) {
-//                if (Double.parseDouble(String.valueOf(s.charAt(i))) <= 9 && decimalPlaces == 0) {
-//                    num *= 10; num += (double) s.charAt(i);
-//                } else {
-//                    num += (double) s.charAt(i) / (Math.pow(10, decimalPlaces));
-//                    decimalPlaces++;
-//                }
-//            }
-
-            if (s.charAt(i) == '0') {
-                if (decimalPlaces == 0) {
-                    num *= 10.0;
-                }
-                else {
-                    decimalPlaces++;
+            if (!operationsList.contains(String.valueOf(s.charAt(i)))) {
+                double currentNumber = Double.parseDouble(String.valueOf(s.charAt(i)));
+                if (currentNumber <= 9) {
+                    if (decimalPlaces == 0) {
+                        num *= 10; num += currentNumber;
+                    } else {
+                        num += currentNumber/(Math.pow(10, decimalPlaces));
+                        decimalPlaces++;
+                    }
                 }
             }
-            else if (s.charAt(i) == '1') {
-                if (decimalPlaces == 0) {
-                    num *= 10.0; num += 1.0;
-                }
-                else {
-                    num += 1.0/(Math.pow(10, decimalPlaces));
-                    decimalPlaces++;
-                }
-            }
-            else if (s.charAt(i) == '2') {
-                if (decimalPlaces == 0) {
-                    num *= 10.0; num += 2.0;
-                }
-                else {
-                    num += 2.0/(Math.pow(10, decimalPlaces));
-                    decimalPlaces++;
-                }
-            }
-            else if (s.charAt(i) == '3') {
-                if (decimalPlaces == 0) {
-                    num *= 10.0; num += 3.0;
-                }
-                else {
-                    num += 3.0/(Math.pow(10, decimalPlaces));
-                    decimalPlaces++;
-                }
-            }
-            else if (s.charAt(i) == '4') {
-                if (decimalPlaces == 0) {
-                    num *= 10.0; num += 4.0;
-                }
-                else {
-                    num += 4.0/(Math.pow(10, decimalPlaces));
-                    decimalPlaces++;
-                }
-            }
-            else if (s.charAt(i) == '5') {
-                if (decimalPlaces == 0) {
-                    num *= 10.0; num += 5.0;
-                }
-                else {
-                    num += 5.0/(Math.pow(10, decimalPlaces));
-                    decimalPlaces++;
-                }
-            }
-            else if (s.charAt(i) == '6') {
-                if (decimalPlaces == 0) {
-                    num *= 10.0; num += 6.0;
-                }
-                else {
-                    num += 6.0/(Math.pow(10, decimalPlaces));
-                    decimalPlaces++;
-                }
-            }
-            else if (s.charAt(i) == '7') {
-                if (decimalPlaces == 0) {
-                    num *= 10.0; num += 7.0;
-                }
-                else {
-                    num += 7.0/(Math.pow(10, decimalPlaces));
-                    decimalPlaces++;
-                }
-            }
-            else if (s.charAt(i) == '8') {
-                if (decimalPlaces == 0) {
-                    num *= 10.0; num += 8.0;
-                }
-                else {
-                    num += 8.0/(Math.pow(10, decimalPlaces));
-                    decimalPlaces++;
-                }
-            }
-            else if (s.charAt(i) == '9') {
-                if (decimalPlaces == 0) {
-                    num *= 10.0; num += 9.0;
-                }
-                else {
-                    num += 9.0/(Math.pow(10, decimalPlaces));
-                    decimalPlaces++;
-                }
-            }
-
+            
             switch (s.charAt(i)) {
                 case '.':
                     decimalPlaces = 1;
