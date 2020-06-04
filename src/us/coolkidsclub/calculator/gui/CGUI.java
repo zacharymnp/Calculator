@@ -10,7 +10,7 @@ import static us.coolkidsclub.calculator.utils.MathUtils.doMath;
 
 public class CGUI extends JPanel implements ActionListener { //TODO implement singleton? => it would be absolutely pointless, but it is a neat way to flex
     //TODO make the header of the calculator window have an actual name
-    private static final long serialVersionUID = 1L; //what's this used for?
+    private static final long serialVersionUID = 1L; //needed for eclipse
 
     public static String display = "";
     public static boolean additionalFunctionsShown = false;

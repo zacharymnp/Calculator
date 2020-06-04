@@ -83,8 +83,8 @@ public class MathUtils {
 
         }
 
+        nums.set(0, round(nums.get(0)));
         double answer = nums.get(0);
-        nums.set(0, round(answer));
 
         output = answer - ((int) answer) == 0
                 ? String.valueOf((int) answer)
@@ -102,7 +102,7 @@ public class MathUtils {
      * @return double The rounded value
      */
     public static double round(double a) {
-        return ((double)((int)(a * 1000)) / 1000);
+        return ((double)((int)(a * 100000)) / 100000);
     }
 
 }
