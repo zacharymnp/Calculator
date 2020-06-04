@@ -1,5 +1,7 @@
 package us.coolkidsclub.calculator.utils;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,7 +104,9 @@ public class MathUtils {
      * @return double The rounded value
      */
     public static double round(double a) {
-        return ((double)((int)(a * 100000)) / 100000);
+    	BigDecimal tempValue = new BigDecimal(Double.toString(a));
+    	tempValue = tempValue.setScale(7, RoundingMode.HALF_UP);
+        return tempValue.doubleValue();
     }
 
 }
