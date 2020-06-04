@@ -13,7 +13,6 @@ public class MathUtils {
      * 		@return String The text to be output.
      */
     public static String doMath(String s) {
-        //TODO remove error where there is an tiny extra decimal
         //TODO add additional functions
         //TODO add PEMDAS
         //TODO look into BigDecimal to add precision
@@ -183,8 +182,13 @@ public class MathUtils {
             }
 
         }
-        nums.set(0, round(nums.get(0)));
-        output = String.valueOf(nums.get(0));
+
+        double answer = nums.get(0);
+        nums.set(0, round(answer));
+
+        output = answer - ((int) answer) == 0
+                ? String.valueOf((int) answer)
+                : String.valueOf(answer);
 
         System.out.println(output); //putting output in console for debugging purposes
         return output;
