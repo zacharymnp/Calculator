@@ -85,28 +85,23 @@ public class MathUtils {
 
         }
 
-        nums.set(0, round(nums.get(0)));
         double answer = nums.get(0);
-
-        output = answer - ((int) answer) == 0
-                ? String.valueOf((int) answer)
-                : String.valueOf(answer);
+        output = String.format("%.7f", answer); //rounding to 7 decimal places
+        for (int i = output.length() - 1; i > 0; i--) { //removing unnecessary decimal places
+            if (output.charAt(i) == '0') {
+                output = output.substring(0, i);
+            }
+            else if (output.charAt(i) == '.') {
+                output = output.substring(0, i);
+                break;
+            }
+            else {
+                break;
+            }
+        }
 
         System.out.println(output); //putting output in console for debugging purposes
         return output;
 
     }
-
-
-    /**
-     * This method is used to round a double value to the nearest thousandth
-     * @param a The number to be rounded
-     * @return double The rounded value
-     */
-    public static double round(double a) {
-    	BigDecimal tempValue = new BigDecimal(Double.toString(a));
-    	tempValue = tempValue.setScale(7, RoundingMode.HALF_UP);
-        return tempValue.doubleValue();
-    }
-
 }

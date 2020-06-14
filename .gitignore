@@ -25,3 +25,4 @@ hs_err_pid*
 *idea
 src/.project
 src/.classpath
+out/production/Calculator/META-INF/MANIFEST.MF
