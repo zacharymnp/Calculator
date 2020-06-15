@@ -108,6 +108,7 @@ public class MathUtils {
                         case ("*"): outputList.set(k - 2, firstOperand * secondOperand); outputList.remove(k - 1); outputList.remove(k); break;
                         case ("/"): outputList.set(k - 2, firstOperand / secondOperand); outputList.remove(k - 1); outputList.remove(k); break;
                     }
+                    k -= 2;
                 }
             }
         }
