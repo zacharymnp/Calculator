@@ -17,11 +17,12 @@ public class MathUtils {
     public static String doMath(String s) {
         //TODO add additional functions
         //TODO add PEMDAS
-        //TODO look into BigDecimal to add precision
-        List<Double> nums = new ArrayList<Double>();
+        List<Object> inputList = new ArrayList<Object>();
+        List<Object> outputList = new ArrayList<Object>();
         List<String> operators = new ArrayList<String>();
         double num = 0d;
         String output = "undefined";
+        int operatorCount = 0;
         int decimalPlaces = 0;
 
         operationsList.add(".");
@@ -30,7 +31,7 @@ public class MathUtils {
         operationsList.add("*");
         operationsList.add("/");
 
-        //for loop adds numbers and operators in the String to their respective Lists
+        //parses numbers and adds values to inputList
         for (int i = 0; i < s.length(); i++) {
 
             if (!operationsList.contains(String.valueOf(s.charAt(i)))) {
@@ -44,48 +45,74 @@ public class MathUtils {
                     }
                 }
             }
-            
-            switch (s.charAt(i)) {
-                case '.':
-                    decimalPlaces = 1;
-                    break;
-                case '+':
-                    operators.add("+"); nums.add(num); num = 0.0; decimalPlaces = 0;
-                    break;
-                case '-':
-                    operators.add("-"); nums.add(num); num = 0.0; decimalPlaces = 0;
-                    break;
-                case '*':
-                    operators.add("*"); nums.add(num); num = 0.0; decimalPlaces = 0;
-                    break;
-                case '/':
-                    operators.add("/"); nums.add(num); num = 0.0; decimalPlaces = 0;
+            else if (s.charAt(i) == '.') {
+                decimalPlaces = 1;
+                break;
+            }
+            else if (s.charAt(i) == '+') {
+                inputList.add(num); inputList.add("+"); num = 0.0; decimalPlaces = 0; operatorCount++;
+                break;
+            }
+            else if (s.charAt(i) == '-') {
+                inputList.add(num); inputList.add("-"); num = 0.0; decimalPlaces = 0; operatorCount++;
+                break;
+            }
+            else if (s.charAt(i) == '*') {
+                inputList.add(num); inputList.add("*"); num = 0.0; decimalPlaces = 0; operatorCount++;
+                break;
+            }
+            else if (s.charAt(i) == '/') {
+                inputList.add(num); inputList.add("/"); num = 0.0; decimalPlaces = 0; operatorCount++;
+                break;
+            }
+        }
+        inputList.add(num); //adding the last number to inputList
+
+        //puts equation into reverse polish notation (operators are after operands)
+        for (int i = 0; i < inputList.size(); i++) {
+
+            if (inputList.get(i).equals("+") || inputList.get(i).equals("-")) {
+                if (operators.size() == 0) {
+                    operators.add(inputList.get(i).toString());
+                }
+                else if (operators.get(operators.size() - 1).equals("+") || operators.get(operators.size() - 1).equals("-")) {
+                    outputList.add(operators.get(operators.size() - 1));
+                }
+                operators.add(inputList.get(i).toString());
+            }
+            else if (inputList.get(i).equals("*") || inputList.get(i).equals("/")) {
+                operators.add(inputList.get(i).toString());
+            }
+            else {
+                outputList.add(inputList.get(i));
+            }
+        }
+        //for loop puts remaining operators into outputList in reverse order
+        for (int i = operators.size() - 1; i >= 0; i--) {
+            outputList.add(operators.get(i));
+        }
+
+        //math performed on reverse Polish notation equation
+        double firstOperand = 0;
+        double secondOperand = 0;
+        String operator = "undefined";
+        for (int i = 0; i < operatorCount; i++) {
+            for (int k = 0; k < outputList.size(); k++) {
+                if (outputList.get(k).equals("+") || outputList.get(k).equals("-") || outputList.get(k).equals("*") || outputList.get(k).equals("/")) {
+                    firstOperand = (double) outputList.get(k - 2);
+                    secondOperand = (double) outputList.get(k - 1);
+                    operator = outputList.get(i).toString();
+                    switch (operator) {
+                        case ("+"): outputList.set(k - 2, firstOperand + secondOperand); outputList.remove(k - 1); outputList.remove(k); break;
+                        case ("-"): outputList.set(k - 2, firstOperand - secondOperand); outputList.remove(k - 1); outputList.remove(k); break;
+                        case ("*"): outputList.set(k - 2, firstOperand * secondOperand); outputList.remove(k - 1); outputList.remove(k); break;
+                        case ("/"): outputList.set(k - 2, firstOperand / secondOperand); outputList.remove(k - 1); outputList.remove(k); break;
+                    }
+                }
             }
         }
 
-
-        nums.add(num); //adding the last number to nums
-
-        //for loop actually does the math
-        for (int i = 0; i < operators.size(); i++) {
-
-            switch (operators.get(i)) { //Optimized by Ivan to make the same logic one line longer :)
-                case "*":
-                    nums.set(0, nums.get(0) * nums.get(i + 1));
-                    break;
-                case "/":
-                    nums.set(0, nums.get(0) / nums.get(i + 1));
-                    break;
-                case "+":
-                    nums.set(0, nums.get(0) + nums.get(i + 1));
-                    break;
-                case "-":
-                    nums.set(0, nums.get(0) - nums.get(i + 1));
-            }
-
-        }
-
-        double answer = nums.get(0);
+        double answer = (double)outputList.get(0);
         output = String.format("%.7f", answer); //rounding to 7 decimal places
         for (int i = output.length() - 1; i > 0; i--) { //removing unnecessary decimal places
             if (output.charAt(i) == '0') {
