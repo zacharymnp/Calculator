@@ -1,11 +1,12 @@
 package us.coolkidsclub.calculator.utils;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MathUtils {
+
+    private static final ArrayList<Character> validCharOperations = new ArrayList<>(Arrays.asList('+', '-', '*', '/'));
 
     /**
      * This method is run when the "equal" button is pressed and decides what math to do.
@@ -25,22 +26,12 @@ public class MathUtils {
 
         //parses numbers and adds values to inputList
         for (int i = 0; i < s.length(); i++) {
+
             if (s.charAt(i) == '.') {
                 decimalPlaces = 1;
-            }
-            else if (s.charAt(i) == '+') {
-                inputList.add(num); inputList.add("+"); num = 0.0; decimalPlaces = 0; operatorCount++;
-            }
-            else if (s.charAt(i) == '-') {
-                inputList.add(num); inputList.add("-"); num = 0.0; decimalPlaces = 0; operatorCount++;
-            }
-            else if (s.charAt(i) == '*') {
-                inputList.add(num); inputList.add("*"); num = 0.0; decimalPlaces = 0; operatorCount++;
-            }
-            else if (s.charAt(i) == '/') {
-                inputList.add(num); inputList.add("/"); num = 0.0; decimalPlaces = 0; operatorCount++;
-            }
-            else {
+            } else if (validCharOperations.contains(s.charAt(i))) {
+                inputList.add(num); inputList.add(String.valueOf(s.charAt(i))); num = 0; decimalPlaces = 0; operatorCount++;
+            } else {
                 double currentNumber = Double.parseDouble(String.valueOf(s.charAt(i)));
                 if (currentNumber <= 9) {
                     if (decimalPlaces == 0) {
@@ -51,6 +42,7 @@ public class MathUtils {
                     }
                 }
             }
+
         }
         inputList.add(num); //adding the last number to inputList
 
@@ -102,7 +94,7 @@ public class MathUtils {
             }
         }
 
-        double answer = (double)outputList.get(0);
+        double answer = (double) outputList.get(0);
         output = String.format("%.7f", answer); //rounding to 7 decimal places
         for (int i = output.length() - 1; i > 0; i--) { //removing unnecessary decimal places
             if (output.charAt(i) == '0') {
