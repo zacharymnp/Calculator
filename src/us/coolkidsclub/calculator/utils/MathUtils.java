@@ -7,8 +7,6 @@ import java.util.List;
 
 public class MathUtils {
 
-    static ArrayList<String> operationsList = new ArrayList<>();
-
     /**
      * This method is run when the "equal" button is pressed and decides what math to do.
      *      @param s The input string.
@@ -25,16 +23,24 @@ public class MathUtils {
         int operatorCount = 0;
         int decimalPlaces = 0;
 
-        operationsList.add(".");
-        operationsList.add("+");
-        operationsList.add("-");
-        operationsList.add("*");
-        operationsList.add("/");
-
         //parses numbers and adds values to inputList
         for (int i = 0; i < s.length(); i++) {
-
-            if (!operationsList.contains(String.valueOf(s.charAt(i)))) {
+            if (s.charAt(i) == '.') {
+                decimalPlaces = 1;
+            }
+            else if (s.charAt(i) == '+') {
+                inputList.add(num); inputList.add("+"); num = 0.0; decimalPlaces = 0; operatorCount++;
+            }
+            else if (s.charAt(i) == '-') {
+                inputList.add(num); inputList.add("-"); num = 0.0; decimalPlaces = 0; operatorCount++;
+            }
+            else if (s.charAt(i) == '*') {
+                inputList.add(num); inputList.add("*"); num = 0.0; decimalPlaces = 0; operatorCount++;
+            }
+            else if (s.charAt(i) == '/') {
+                inputList.add(num); inputList.add("/"); num = 0.0; decimalPlaces = 0; operatorCount++;
+            }
+            else {
                 double currentNumber = Double.parseDouble(String.valueOf(s.charAt(i)));
                 if (currentNumber <= 9) {
                     if (decimalPlaces == 0) {
@@ -44,26 +50,6 @@ public class MathUtils {
                         decimalPlaces++;
                     }
                 }
-            }
-            else if (s.charAt(i) == '.') {
-                decimalPlaces = 1;
-                break;
-            }
-            else if (s.charAt(i) == '+') {
-                inputList.add(num); inputList.add("+"); num = 0.0; decimalPlaces = 0; operatorCount++;
-                break;
-            }
-            else if (s.charAt(i) == '-') {
-                inputList.add(num); inputList.add("-"); num = 0.0; decimalPlaces = 0; operatorCount++;
-                break;
-            }
-            else if (s.charAt(i) == '*') {
-                inputList.add(num); inputList.add("*"); num = 0.0; decimalPlaces = 0; operatorCount++;
-                break;
-            }
-            else if (s.charAt(i) == '/') {
-                inputList.add(num); inputList.add("/"); num = 0.0; decimalPlaces = 0; operatorCount++;
-                break;
             }
         }
         inputList.add(num); //adding the last number to inputList
