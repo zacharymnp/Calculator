@@ -63,8 +63,8 @@ public class MathUtils {
                 }
                 else if (operators.get(operators.size() - 1).equals("+") || operators.get(operators.size() - 1).equals("-")) {
                     outputList.add(operators.get(operators.size() - 1));
+                    operators.add(inputList.get(i).toString());
                 }
-                operators.add(inputList.get(i).toString());
             }
             else if (inputList.get(i).equals("*") || inputList.get(i).equals("/")) {
                 operators.add(inputList.get(i).toString());
@@ -87,17 +87,19 @@ public class MathUtils {
                 if (outputList.get(k).equals("+") || outputList.get(k).equals("-") || outputList.get(k).equals("*") || outputList.get(k).equals("/")) {
                     firstOperand = (double) outputList.get(k - 2);
                     secondOperand = (double) outputList.get(k - 1);
-                    operator = outputList.get(i).toString();
+                    operator = outputList.get(k).toString();
                     switch (operator) {
-                        case ("+"): outputList.set(k - 2, firstOperand + secondOperand); outputList.remove(k - 1); outputList.remove(k); break;
-                        case ("-"): outputList.set(k - 2, firstOperand - secondOperand); outputList.remove(k - 1); outputList.remove(k); break;
-                        case ("*"): outputList.set(k - 2, firstOperand * secondOperand); outputList.remove(k - 1); outputList.remove(k); break;
-                        case ("/"): outputList.set(k - 2, firstOperand / secondOperand); outputList.remove(k - 1); outputList.remove(k); break;
+                        case ("+"): outputList.set(k - 2, firstOperand + secondOperand); outputList.remove(k - 1); outputList.remove(k - 1); break;
+                        case ("-"): outputList.set(k - 2, firstOperand - secondOperand); outputList.remove(k - 1); outputList.remove(k - 1); break;
+                        case ("*"): outputList.set(k - 2, firstOperand * secondOperand); outputList.remove(k - 1); outputList.remove(k - 1); break;
+                        case ("/"): outputList.set(k - 2, firstOperand / secondOperand); outputList.remove(k - 1); outputList.remove(k - 1); break;
+                        //removes k - 1 twice b/c index falls
                     }
                     k -= 2;
                 }
             }
         }
+        System.out.println("answer:" + outputList.get(0));
 
         double answer = (double)outputList.get(0);
         output = String.format("%.7f", answer); //rounding to 7 decimal places
