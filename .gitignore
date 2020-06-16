@@ -26,3 +26,9 @@ hs_err_pid*
 src/.project
 src/.classpath
 out/production/Calculator/META-INF/MANIFEST.MF
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
