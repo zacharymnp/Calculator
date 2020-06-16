@@ -55,22 +55,24 @@ public class MathUtils {
         inputList.add(num); //adding the last number to inputList
 
         //puts equation into reverse polish notation (operators are after operands)
-        for (int i = 0; i < inputList.size(); i++) {
+        for (Object input : inputList) {
 
-            if (inputList.get(i).equals("+") || inputList.get(i).equals("-")) {
-                if (operators.size() == 0) {
-                    operators.add(inputList.get(i).toString());
-                }
-                else if (operators.get(operators.size() - 1).equals("+") || operators.get(operators.size() - 1).equals("-")) {
+            if (input.equals("+") || input.equals("-")) {
+                if (operators.size() != 0) {
                     outputList.add(operators.get(operators.size() - 1));
-                    operators.add(inputList.get(i).toString());
+                    operators.remove(operators.get(operators.size() - 1));
                 }
+                operators.add(input.toString());
             }
-            else if (inputList.get(i).equals("*") || inputList.get(i).equals("/")) {
-                operators.add(inputList.get(i).toString());
+            else if (input.equals("*") || input.equals("/")) {
+                if (operators.size() != 0 && (operators.get(operators.size() - 1).equals("*") || operators.get(operators.size() - 1).equals("/"))) {
+                    outputList.add(operators.get(operators.size() - 1));
+                    operators.remove(operators.get(operators.size() - 1));
+                }
+                operators.add(input.toString());
             }
             else {
-                outputList.add(inputList.get(i));
+                outputList.add(input);
             }
         }
         //for loop puts remaining operators into outputList in reverse order
@@ -99,7 +101,6 @@ public class MathUtils {
                 }
             }
         }
-        System.out.println("answer:" + outputList.get(0));
 
         double answer = (double)outputList.get(0);
         output = String.format("%.7f", answer); //rounding to 7 decimal places
