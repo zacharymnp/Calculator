@@ -1,6 +1,6 @@
 package coolkidsclub.calculator;
 
-import us.coolkidsclub.calculator.gui.CGUI;
+import coolkidsclub.calculator.gui.CGUI;
 
 public class InitiateCalculator {
 
