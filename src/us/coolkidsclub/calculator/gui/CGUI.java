@@ -1,4 +1,4 @@
-package us.coolkidsclub.calculator.gui;
+package coolkidsclub.calculator.gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static us.coolkidsclub.calculator.utils.MathUtils.doMath;
+import static coolkidsclub.calculator.utils.MathUtils.doMath;
 
 public class CGUI extends JPanel implements ActionListener { //TODO implement singleton? => it would be absolutely pointless, but it is a neat way to flex
     //TODO make the header of the calculator window have an actual name

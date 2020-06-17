@@ -1,4 +1,4 @@
-package us.coolkidsclub.calculator.utils;
+package coolkidsclub.calculator.utils;
 
 
 /**

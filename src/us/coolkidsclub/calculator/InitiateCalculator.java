@@ -1,4 +1,4 @@
-package us.coolkidsclub.calculator;
+package coolkidsclub.calculator;
 
 import us.coolkidsclub.calculator.gui.CGUI;
 
